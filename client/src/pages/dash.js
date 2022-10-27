@@ -29,25 +29,30 @@ const Dashbord = () => {
     useEffect(() => {
 
         const token = localStorage.getItem('token')
-        console.log("hwllo")
-
         if (token) {
             const user = jwt(token)
-            console.log(user)
-            if (!user) {
-                localStorage.removeItem('token')
-                history('/login')
-                alert("Logged out")
-            } else {
-                populateQuote()
-                alert("Logged in")
-                history('/dash')
-                document.getElementById('log').style.display = 'none'
-                document.getElementById('reg').style.display = 'none'
-                document.getElementById('home').innerHTML = 'Log out'
-            }
 
         }
+        else{
+            alert("Please Login")
+        }
+        // if (token) {
+        //     const user = jwt(token)
+        //     console.log(user)
+        //     if (!user) {
+        //         localStorage.removeItem('token')
+        //         history('/login')
+        //         alert("Logged out")
+        //     } else {
+        //         populateQuote()
+        //         alert("Logged in")
+        //         history('/dash')
+        //         document.getElementById('log').style.display = 'none'
+        //         document.getElementById('reg').style.display = 'none'
+        //         document.getElementById('home').innerHTML = 'Log out'
+        //     }
+
+        // }
     }, [])
 
     async function updateQuote(event) {
@@ -63,7 +68,6 @@ const Dashbord = () => {
             })
         })
         const data =await req.json()
-        console.log(data)
         if (data.status === 'ok') {
             setTempQuote('')
             setQuote(data.quote)

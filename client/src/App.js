@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from 'react'
+import axios from 'axios';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Login from './pages/login'
 import Register from './pages/register'
@@ -11,7 +12,7 @@ import BooksView from './pages/bookview'
 
 const App = () => {
     return <div>
-        <h1 style={{paddingLeft:"40px"}}>Library Management</h1>
+        <h1 style={{paddingLeft:"40px"}}><a style={{textDecoration:'none', color:'black'}} href="/">Library Management</a></h1>
         <Nav/>
         <BrowserRouter>
             <Routes>
